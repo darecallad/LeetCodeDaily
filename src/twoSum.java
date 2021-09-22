@@ -32,7 +32,7 @@ public class twoSum {
         return null;
     }
     // result 2
-    // map
+    // map O(n)
     public int[] twoSum1(int[] nums, int target){
         // first import HashMap
         Map<Integer, Integer> map = new HashMap<>();
@@ -49,7 +49,22 @@ public class twoSum {
         // else return null
         return null;
     }
-
     //result 3
+    //hashMap One-Pass  O(n) we traverse it only once O(1)
+    public int[] twoSum2(int[] nums, int target){
+        // first import HashMap
+        Map<Integer, Integer> map = new HashMap<>();
+        // check each element in the int array
+        for(int i = 0; i < nums.length; i ++){
+            int complement = target - nums[i];
+            // if exist
+            if(map.containsKey(complement)) return new int[] {map.get(complement), i};
+
+            // map the element once only
+            map.put(nums[i], i);
+        }
+        //else return null;
+        return null;
+    }
 
 }
