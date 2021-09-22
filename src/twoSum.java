@@ -19,11 +19,11 @@
 //Input: nums = [3,3], target = 6
 //Output: [0,1]
 
-
+import java.util.HashMap;
 
 public class twoSum {
 
-    // result 1
+    // result 1 O(n^2)
     public int[] twoSum(int[] nums, int target){
         for(int i = 0; i < nums.length - 1; i++){
             for(int j = i+1; j < nums.length; j++)
@@ -32,5 +32,24 @@ public class twoSum {
         return null;
     }
     // result 2
+    // map
+    public int[] twoSum1(int[] nums, int target){
+        // first import HashMap
+        Map<Integer, Integer> map = new HashMap<>();
+        // map each element with key
+        for(int i = 0; i < nums.length; i ++)
+            map.put(nums[i], i);
+        // check target exist
+        for(int i = 0 ; i < nums.length; i ++){
+            int complement = target - nums[i];
+            // if exist
+            if(map.containsKey(complement) && map.get(complement) != i)
+                return new int[] {i, map.get(complement)};
+        }
+        // else return null
+        return null;
+    }
+
+    //result 3
 
 }
