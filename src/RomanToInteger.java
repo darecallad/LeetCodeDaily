@@ -39,6 +39,7 @@ public class RomanToInteger {
     // first Map the Roman value in static map
     static Map<String, Integer> value = new HashMap<>();
     static {
+        // Solution 1 and 3 using simple symbol 7 Strings
         value.put("I",1);
         value.put("V",5);
         value.put("X",10);
@@ -105,6 +106,29 @@ public class RomanToInteger {
         }
         return sum;
 
+    }
+    // Solution3 O(1)
+    // right to left approach
+
+    public int romanToInt3(String s) {
+        String lastSymbol = s.substring(s.length() -1);
+        int lastValue = value.get(lastSymbol);
+        int total = lastValue;
+
+        // i starting s.length() -2 cuz we added last one already
+        for(int i = s.length() -2 ; i >=0 ; i --){
+            String currentSymbol = s.substring(i,i+1);
+            int currentValue = value.get(currentSymbol);
+            // current value < last value we subtract otherwise we add
+            if(currentValue < lastValue){
+                total -= currentValue;
+            }else{
+                total += currentValue;
+            }
+            // set last value = current value
+            lastValue =currentValue;
+        }
+        return total;
     }
 
 }
