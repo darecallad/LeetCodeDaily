@@ -32,8 +32,48 @@
 //Output: 1994
 //Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
-public class RomanToInteger {
-    public int romanToInt(String s) {
+import java.util.Map;
+import java.util.HashMap;
 
+public class RomanToInteger {
+    // first Map the Roman value in static map
+    static Map<String, Integer> value = new HashMap<>();
+    static {
+        value.put("I",1);
+        value.put("V",5);
+        value.put("X",10);
+        value.put("L",50);
+        value.put("C",100);
+        value.put("D",500);
+        value.put("M",1000);
     }
+    //solution 1
+    public int romanToInt(String s) {
+        //declare sum and i
+       int sum = 0;
+       int i = 0;
+
+       while(i < s.length()){
+           // get symbol and get value
+           String currentSymbol = s.substring(i, i+1);
+           int currentValue = value.get(currentSymbol);
+           int nextValue = 0;
+           // get next value
+           if(i+1 < s.length()){
+               currentSymbol = s.substring(i+1, i+2);
+               nextValue = value.get(currentSymbol);
+           }
+
+           if(currentValue < nextValue){
+               sum += (nextValue - currentValue);
+               i += 2;
+           }
+           else{
+               sum += currentValue;
+               i += 1;
+           }
+       }
+    return sum;
+    }
+
 }
