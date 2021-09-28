@@ -46,8 +46,15 @@ public class RomanToInteger {
         value.put("C",100);
         value.put("D",500);
         value.put("M",1000);
+        // for solution2 make value to more specific
+        value.put("IV", 4);
+        value.put("IX", 9);
+        value.put("XL", 40);
+        value.put("XC", 90);
+        value.put("CD", 400);
+        value.put("CM", 900);
     }
-    //solution 1
+    //solution 1  O(1)
     public int romanToInt(String s) {
         //declare sum and i
        int sum = 0;
@@ -74,6 +81,30 @@ public class RomanToInteger {
            }
        }
     return sum;
+    }
+
+    // Solution2 improve Solution1 by checking 2 elements at one time
+    // O(1)
+    public int romanToInt2(String s) {
+
+        int sum = 0;
+        int i = 0;
+
+        while(i < s.length()){
+            if(i < s.length() -1){
+                String doubleSymbol = s.substring(i, i+2);
+                if(value.containsKey(doubleSymbol)){
+                    sum += value.get(doubleSymbol);
+                    i += 2;
+                    continue;
+                }
+                String singleSymbol = s.substring(i, i+1);
+                sum += value.get(singleSymbol);
+                i += 1;
+            }
+        }
+        return sum;
+
     }
 
 }
