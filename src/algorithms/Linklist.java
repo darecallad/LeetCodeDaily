@@ -69,4 +69,13 @@ public class Linklist {
         first.next = null;
         first = second;
     }
+    public void removeLast(){
+        if(isEmpty()) throw new NoSuchElementException();
+        var current = first;
+        while(current.next != null){
+            current = current.next;
+        }
+        current.next = null;
+    }
+
 }
