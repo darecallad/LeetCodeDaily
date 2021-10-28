@@ -1,5 +1,7 @@
 package algorithms;
 
+import java.util.NoSuchElementException;
+
 public class Linklist {
 
     private class Node {
@@ -58,7 +60,11 @@ public class Linklist {
         return indexOf(item) != -1;
     }
     public void removeFirst(){
-        if(isEmpty()) throw new IllegalArgumentException();
+        if(isEmpty()) throw new NoSuchElementException();
+        if(first == last){
+            first = last = null;
+            return;
+        }
         var second = first.next;
         first.next = null;
         first = second;
