@@ -94,4 +94,14 @@ public class Linklist {
     public int size(){
         return count;
     }
+    public int[] toArray(){
+        int[] array = new int[count];
+        var current = first;
+        int index = 0 ;
+        while(current != null){
+            array[index++] = current.value;
+            current = current.next;
+        }
+        return array;
+    }
 }
