@@ -104,4 +104,44 @@ public class Linklist {
         }
         return array;
     }
+    public void reverseList(){
+        if(isEmpty()) return;
+        if(oneNode()) return;
+
+        var current = first;
+        var a = first;
+        var b = first.next;
+        //O(n)
+        while(current != null){
+            if(b == null){
+                first = last;
+                current = first;
+                return;
+            }
+            b = b.next;
+            a = b;
+            a.next = current;
+            current = a;
+        }
+    }
+    public int getKthFromTheEnd(int k){
+        if(isEmpty()) throw new IllegalArgumentException();
+        if(k < 0 ) throw new IllegalArgumentException();
+        var f = first;
+        var s = first;
+        int count = 0;
+        while( count < k){
+            if(s == null)
+                throw new IllegalArgumentException();
+            s = s.next;
+        }
+        while( s != last){
+            f = f.next;
+            s = s.next;
+        }
+        return f.value;
+
+
+
+    }
 }
