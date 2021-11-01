@@ -35,7 +35,7 @@ public class BinaryTreeInorder {
             }
         }
     }
-    //Solution 2
+    //Solution 2  O(n) / O(n)
     public List <Integer> inorderTraversal1(TreeNode root){
         List <Integer> res = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
