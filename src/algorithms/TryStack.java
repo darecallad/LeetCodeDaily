@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class TryStack {
-
-    private int count  = 0;
+    private int count = 0;
     private int[] arr = new int[5];
 
     public void push(int item){
